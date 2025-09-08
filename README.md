@@ -13,12 +13,11 @@ MailGateway 是一个基于 Go 语言开发的高性能邮件网关认证系统�
 <img width="1658" height="876" alt="image" src="https://github.com/user-attachments/assets/6efd5485-1328-4979-abec-ed17e5b4afde" />
 
 
-### 后台首页（系统设置）
+### 后台首页（仪表盘）
 
 <img width="1658" height="876" alt="image" src="https://github.com/user-attachments/assets/b24b252e-ce50-4e72-a71d-cce97ea1efae" />
 
 
-> 如果图片未显示，请将截图文件放到仓库路径：docs/images/，并命名为 login.png 与 dashboard.png。
 
 ## 核心特性
 
