@@ -1,0 +1,48 @@
+# MailGateway 配置文件
+server:
+  host: "0.0.0.0"  # 监听地址: 127.0.0.1(本地) 或 0.0.0.0(所有接口)
+  port: "8089"        # 管理服务监听端口
+  mode: "debug"       # debug, release, test
+
+# Nginx认证服务配置
+auth_server:
+  host: "127.0.0.1"   # 认证服务监听地址，强制本地访问
+  port: "8090"        # 认证服务监听端口
+
+database:
+  host: "47.95.177.68"
+  port: "3307"
+  user: "root"
+  password: "123456"
+  database: "mail"
+  max_open_conns: 600
+  max_idle_conns: 200
+  conn_max_lifetime: "1h"
+
+redis:
+  host: "47.95.177.68"
+  port: "6380"
+  password: "123456"
+  db: 0
+
+auth:
+  max_fail_attempts: 5
+  fail_ttl: "60s"
+  lock_ttl: "300s"
+
+jwt:
+  secret: "your-jwt-secret-key-change-this-in-production"
+  expiration: "24h"
+  refresh_expiration: "168h"  # 7天
+
+admin:
+  default_username: "admin"
+  default_password: "123456"
+
+totp:
+  issuer: "MailGateway"
+  secret_length: 16
+
+log:
+  level: "info"
+  file_path: "logs/app.log"

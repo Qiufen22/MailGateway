@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mailgateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mailgateway-app
+    ports:
+      - "8089:8089"
+    environment:
+      - GIN_MODE=release
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./conf:/app/conf:ro
+      - ./conf/logs:/app/logs:rw
+    restart: unless-stopped
+    networks:
+      - mailgateway-network
+
+
+  # 可选：如果需要Redis服务
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: mailgateway-redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   restart: unless-stopped
+  #   networks:
+  #     - mailgateway-network
+  #   command: redis-server --appendonly yes
+
+networks:
+  mailgateway-network:
+    driver: bridge
+
+# volumes:
+#   redis_data:
+#     driver: local
